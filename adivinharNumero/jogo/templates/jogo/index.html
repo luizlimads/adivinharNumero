@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'check' id_ns=id_ns %}" method="POST">{% csrf_token %}
+        <label>Sua tentativa</label>
+        <input type="number" placeholder="um numero de 0 a 100" name="chute"/>
+
+        <input type="submit" value="enviar"/>
+    </form>
+    {% if check %}
+        <h1>Parabens voce acertou e so tentou {{tentativas}}</h1>
+    {% endif %}
+</body>
+</html>
