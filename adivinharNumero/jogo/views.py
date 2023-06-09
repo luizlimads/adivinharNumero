@@ -1,7 +1,16 @@
 from django.shortcuts import render,redirect,get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from .models import NumeroSecreto,Chute
+from django.http import HttpResponseForbidden
 
+
+@login_required
+def atrio(request,usuario):
+    if request.user.username != usuario:
+        return HttpResponseForbidden(f"Acesso restrito apenas para o usuário {usuario}.")
+    return render(request, "jogo/atrio.html")
+
+@login_required
 def index(request,id_ns):     
     context = {"id_ns": id_ns}
     return render(request, "jogo/index.html", context)

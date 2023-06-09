@@ -8,7 +8,6 @@ from django.core.exceptions import ValidationError
 class NumeroSecreto(models.Model):
     id = models.BigAutoField(primary_key=True)
     segredo = models.IntegerField()
-
     def save(self, *args, **kwargs):
         if not self.segredo:
             self.segredo = random.randint(0, 100)

@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_URL = '/usuario/login/'
+
 ROOT_URLCONF = 'adivinharNumero.urls'
 
 TEMPLATES = [
