@@ -1,20 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/myStyle/mystyle.css' %}">
 </head>
 <body>
-    <form action="{% url 'check' id_ns=id_ns %}" method="POST">{% csrf_token %}
-        <label>Sua tentativa</label>
-        <input type="number" placeholder="um numero de 0 a 100" name="chute"/>
-
-        <input type="submit" value="enviar"/>
-    </form>
-    {% if check %}
-        <h1>Parabens voce acertou e so tentou {{tentativas}}</h1>
-    {% endif %}
-</body>
+    <div class="vh-100 d-flex align-items-center">
+        <div class="row container-fluid p-0 m-0">
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="card w-25 min20 max60  d-flex flex-column justify-content-center align-items-center m-0 p-0" >
+                    <form action="{% url 'check' id_ns=id_ns %}" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="chute">Tente acertar o número secreto</label>
+                            <input type="number" class="form-control" id="chute" aria-describedby="chuteInfo" placeholder="Um numero de 0 a 100" name="chute">
+                            <small id="chuteInfo" class="form-text text-muted">
+                                Você podera acertar de 1
+                            </small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tentar</button>
+                    </form>    
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="card w-25 min20 max60" >
+                    {% if check %}
+                    <h1>Já acertaram esse numero secreto</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</div>
 </html>
