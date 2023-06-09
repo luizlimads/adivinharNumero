@@ -17,7 +17,9 @@ def check(request,id_ns):
     chute.save()
     if(numero_secreto.segredo == valor_chute):
         tentativas = Chute.objects.filter(id_segredo_id=id_ns).count()
-        context = {'id_ns': id_ns,'check':True,'tentativas':tentativas}
+        context = {'id_ns': id_ns,
+                   'check':True,
+                   'tentativas':tentativas}
         return render(request, "jogo/index.html", context)
     else:
         kwargs = {'id_ns':id_ns}
