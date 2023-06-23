@@ -10,6 +10,9 @@ from util.Messages import Messages as m
 
 # Create your views here.
 def login(request):
+    storage = messages.get_messages(request)
+    for item in storage:
+        pass
     return render(request, "login.html")
 
 def valida_usuario(request):
@@ -23,7 +26,7 @@ def valida_usuario(request):
     else:
         messages.error(request,m.ERRO_LOGAR_USUARIO.value)
         return redirect('login')
-    
+
 def registra_usuario(request):
     if request.method == 'GET':
         return redirect('login')  

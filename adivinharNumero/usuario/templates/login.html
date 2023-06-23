@@ -18,6 +18,21 @@
                         <input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
                     </div>
                 </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.message == 'sucess: 20' %}
+                            <p>sucesso a cadastrar</p>
+                        {% elif message.message == 'erro: 40' %}
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                $('#exampleModal').modal('show');
+                                });
+                            </script>
+                        {% elif message.message == 'erro: 41' %}
+                            <p>erro a logar usuario</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
                 <div class="form-group pl-2 pr-1">
                     <button type="submit" class="btn btn-primary btn-block btn-lg">Ir</button>
                 </div>

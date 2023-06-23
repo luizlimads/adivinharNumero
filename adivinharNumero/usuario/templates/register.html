@@ -17,12 +17,19 @@
                                 <input type="text" class="form-control" name="apelido" placeholder="Apelido" required="required">
                             </div>
                         </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon pl-2 pr-3"><i class="fa fa-lock"></i></span>
-                                    <input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
-                                </div>
-                        </div>    
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon pl-2 pr-3"><i class="fa fa-lock"></i></span>
+                                <input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
+                            </div>
+                        </div>
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.message == 'erro: 40' %}
+                                    <p>erro ao cadastrar usuario</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}  
                     </div>
                 </div>
                 <div class="modal-footer">
