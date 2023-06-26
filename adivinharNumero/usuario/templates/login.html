@@ -1,6 +1,8 @@
 {% extends 'partials/_base.html' %}
+{% load static %}
 
 {% block content %}
+<script src="{% static 'js\usuario.js' %}"></script>
 <div class="m-0 p-0 vh-100 d-flex align-items-center justify-content-center">
     <div class="m-0 p-0 pt-3 card w-25 min20">
         <h3 class="text-center p-3 pb-5">Entrar</h3>
@@ -21,7 +23,7 @@
                 {% if messages %}
                     {% for message in messages %}
                         {% if message.message == 'sucess: 20' %}
-                            <p>sucesso a cadastrar</p>
+                            <p class="alert-success text-center p-1">Sucesso ao cadastrar usuário</p>
                         {% elif message.message == 'erro: 40' %}
                             <script>
                                 document.addEventListener("DOMContentLoaded", function() {
@@ -29,7 +31,7 @@
                                 });
                             </script>
                         {% elif message.message == 'erro: 41' %}
-                            <p>erro a logar usuario</p>
+                            <p class="alert-warning text-center p-1">Erro ao logar com o usuário</p>
                         {% endif %}
                     {% endfor %}
                 {% endif %}
