@@ -1,3 +1,5 @@
+import re
+
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 
@@ -19,7 +21,9 @@ class TestJogo(TestCase):
     def test_acessa_atrio_usuario1_sem_estar_logado_falha(self):
         client = Client()
         response = client.get(f'/usuario/{self.username1}/atrio/')
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, f'/usuario/login/?next=/usuario/{self.username1}/atrio/')
+
 
     def test_acessa_atrio_usuario1_logado_com_usuario2_falha(self):
         client = Client()
