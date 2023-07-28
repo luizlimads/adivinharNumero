@@ -1,0 +1,18 @@
+<header class="menu-principal d-inline-flex bg-dark w-100">
+    <section id="usuario-menu" class="d-inline-flex w-25">
+        <p class="align-self-center ml-3 p-4 border">foto</p>
+        <p class="align-self-end flex-fill pl-4 pb-2">{{request.user.username}}</p>
+    </section>
+    <nav id="itens-menu" class="d-inline-flex w-50">
+        <ul class="align-self-end ml-4 p-1">
+            <li class="d-inline p-2"><a href="{% url 'atrio_1' usuario=request.user.username %}">atrio</a></li>
+            <li class="d-inline p-2"><a href="{% url 'jogo_1' usuario=request.user.username %}">Jogo adivinhar</a></li>
+        </ul>
+    </nav>
+    <section id="opcoes-usuario-menu" class="d-inline-flex w-25">
+        <ul class="align-self-end ml-4 p-1">
+            <li class="d-inline p-2"><a href="#">Configurar</a></li>
+            <li class="d-inline p-2"><a href="{% url 'logout' %}">Sair</a></li>
+        </ul>
+    </section>
+</header>

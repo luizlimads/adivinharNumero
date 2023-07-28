@@ -14,3 +14,13 @@ body {
 .max60{
     max-width: 300px;
 }
+
+.menu-principal{
+    height: 12vh;
+    background-color: black;
+}
+
+.menu-secundario{
+    height: 88vh;
+    width: 20%;
+}

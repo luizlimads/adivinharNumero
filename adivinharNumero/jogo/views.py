@@ -4,11 +4,31 @@ from .models import NumeroSecreto,Chute
 from django.http import HttpResponseForbidden
 
 
+def redireciona_atrio(request, usuario):
+    kwargs = {'usuario':usuario}
+    return redirect("atrio_1",**kwargs)
+
 @login_required
-def atrio(request,usuario):
+def atrio_1(request,usuario):
     if request.user.username != usuario:
         return HttpResponseForbidden(f"Acesso restrito apenas para o usuário {usuario}.")
-    return render(request, "atrio.html")
+    return render(request, "atrio/estatisticas_gerais.html")
+
+@login_required
+def atrio_2(request,usuario):
+    if request.user.username != usuario:
+        return HttpResponseForbidden(f"Acesso restrito apenas para o usuário {usuario}.")
+    return render(request, "atrio/serie_temporal.html")
+
+def redireciona_jogo(request, usuario):
+    kwargs = {'usuario':usuario}
+    return redirect("jogo_1",**kwargs)
+
+@login_required
+def jogo_1(request,usuario):
+    if request.user.username != usuario:
+        return HttpResponseForbidden(f"Acesso restrito apenas para o usuário {usuario}.")
+    return render(request, "jogo/um_jogador.html")
 
 @login_required
 def jogo(request,id_ns):     

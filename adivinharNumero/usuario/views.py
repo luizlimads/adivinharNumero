@@ -2,7 +2,8 @@ import re
 
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -22,7 +23,8 @@ def valida_usuario(request):
     if user is not None:       
         auth_login(request,user)
         kwargs = {'usuario':usuario}
-        return redirect('atrio',**kwargs)
+        messages.success(request,m.SUCESSO_LOGAR_USUARIO.value)
+        return redirect('atrio_1',**kwargs)
     else:
         messages.error(request,m.ERRO_LOGAR_USUARIO.value)
         return redirect('login')
@@ -53,3 +55,8 @@ def verifica_usuario_no_padrao(apelido, senha):
         return True
     else:
         return False
+
+@login_required
+def fazer_logout(request):
+    logout(request)
+    return redirect('login')
